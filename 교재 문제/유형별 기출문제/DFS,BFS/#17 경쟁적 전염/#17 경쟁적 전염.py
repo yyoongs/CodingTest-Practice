@@ -55,5 +55,4 @@ def dfs(a,b):
             ti += 1
 
 print(dfs(x,y))
-print(data)
 
