@@ -7,7 +7,7 @@ result = False
 
 for _ in range(n):
     graph.append(list(map(str,input().split())))
-    
+
 # n = 5
 # graph = [['X', 'S', 'X', 'X', 'T'], ['T', 'X', 'S', 'X', 'X'], ['X', 'X', 'X', 'X', 'X'], ['X', 'T', 'X', 'X', 'X'], ['X', 'X', 'T', 'X', 'X']]
 
