@@ -21,3 +21,4 @@ for i in range(1,len(times)): # times list를 돌면서 시작 시간이 이전 
 print(count)
 
 # 총 시간복잡도 = O(nlogn) => 정렬하는데 가장 오래걸림
+
