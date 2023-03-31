@@ -6,7 +6,7 @@ data = []
 for i in range(n):
     temp = list(map(int,sys.stdin.readline().rstrip().split()))
     data.append(temp)
-# 
+#
 # n = 5
 # data= [[55,185],[58,183],[88,186],[60,175],[46,155]]
 
