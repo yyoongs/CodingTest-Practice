@@ -1,3 +1,6 @@
+# [BOJ] 21940
+# LEVEL : G4
+
 import sys
 from collections import deque
 
