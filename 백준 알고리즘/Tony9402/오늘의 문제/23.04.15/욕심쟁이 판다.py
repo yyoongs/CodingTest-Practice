@@ -24,6 +24,7 @@ dy = [1,0,-1,0]
 answer = 0
 answers = [[0] * n for _ in range(n)]
 
+
 def dfs(posx,posy):
     global n
     if answers[posx][posy] != 0:
