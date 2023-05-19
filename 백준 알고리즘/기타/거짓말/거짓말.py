@@ -42,6 +42,7 @@ if len(truths) != 1:
         hm[t] = True
 
 parties = []
+
 for i in range(m):
     member = list(map(int, sys.stdin.readline().rstrip().split()))
     parties.append(member[1:])
@@ -79,66 +80,4 @@ recursion(parties)
 print(len(answer))
 
 
-# union find
-#
-# 1 2 3 4 5 6 7 8 9 10
-# 1 2 3 4 1 2 7 8 9 3
 
-import sys
-
-n,m = map(int,sys.stdin.readline().rstrip().split())
-
-truths = list(map(int,sys.stdin.readline().rstrip().split()))
-
-parties = []
-for i in range(m):
-    member = list(map(int, sys.stdin.readline().rstrip().split()))
-    parties.append(member[1:])
-
-parent = [0] + [i for i in range(1,n+1)]
-
-def find(x):
-    if parent[x] != x:
-        parent[x] = find(parent[x])
-
-    return parent[x]
-
-
-def union(x,y):
-    nx = find(x)
-    parent[y] = nx
-
-if len(truths) != 1:
-    truths = truths[1:]
-else:
-    truths = []
-
-answer = []
-checked = [False] * m
-
-
-def unionfind(parties):
-    first_num_false = m - sum(checked)
-    for idx,party in enumerate(parties):
-        story = False
-        number = 0
-        for mem in party:
-            if find(mem) in truths:
-                story = True
-                number = find(mem)
-                break
-
-        if story:
-            checked[idx] = True
-            for mem2 in party:
-                if find(mem2) not in truths:
-                    union(number,mem2)
-    second_num_false = m - sum(checked)
-    if first_num_false == second_num_false:
-        return
-    else:
-        unionfind(parties)
-
-unionfind(parties)
-
-print(m - sum(checked))

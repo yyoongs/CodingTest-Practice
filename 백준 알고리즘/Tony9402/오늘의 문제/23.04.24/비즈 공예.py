@@ -6,7 +6,7 @@ import sys
 
 n = int(sys.stdin.readline().rstrip())
 
-bizz = [[[[[[[0]*11 for _ in range(11)] * 11 for _ in range(11)] *11 for _ in range(11)] *11 for _ in range(11)] *11 for _ in range(11)] *6 for _ in range(6)]
+bizz = [[0]*11 for _ in range(7)]
 
 data = [0] * 5
 for i in range(n):
@@ -19,12 +19,9 @@ def counts(pprev,prev, a,b,c,d,e):
     global answer
     temp = 0
     if a == 0 and b ==0 and c ==0 and d == 0:
-        bizz[pprev][prev][a][b][c][d][e] = 1
         return 1
-    if bizz[pprev][prev][a][b][c][d][e] != 0:
-        return bizz[pprev][prev][a][b][c][d][e]
 
-    if prev == 0:
+    if prev == -1:
         if a > 0:
             temp += counts(-1,1,a-1,b,c,d,e)
         if b > 0:
@@ -36,7 +33,7 @@ def counts(pprev,prev, a,b,c,d,e):
         if e > 0:
             temp += counts(-1, 5, a , b, c, d, e-1)
 
-    elif pprev == 0:
+    elif pprev == -1:
         if a > 0 and prev != 1:
             temp += counts(prev,1,a-1,b,c,d,e)
         if b > 0 and prev != 2:
@@ -58,7 +55,6 @@ def counts(pprev,prev, a,b,c,d,e):
             temp += counts(prev, 4, a , b, c, d-1, e)
         if e > 0 and prev != 5 and pprev != 5:
             temp += counts(prev, 5, a , b, c, d, e-1)
-    bizz[pprev][prev][a][b][c][d][e] = temp
     return temp
 
-print(counts(0,0,data[0],data[1],data[2],data[3],data[4]))
+print(counts(-1,-1,data[0],data[1],data[2],data[3],data[4]))
